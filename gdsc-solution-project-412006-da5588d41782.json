@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "gdsc-solution-project-412006",
+  "private_key_id": "da5588d41782401108221a05e5cc755a38bf9cf3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCuUiZvpzsLptLq\neeeIPM/QMFX6qinrMLbQGsmRfOkNlf1cftjtV3/JvzMlTx9j1jOf0t+fa/icgbJ1\n/p0JsZAD40XZ7hg5xM7X/BkKJ3phqRSYupObpiAG/gBGcTtprdK92zorMEl3DPVd\ncm05zivhzIjk4/fE+lbzFKuXIMh/oGFICHH6HCyyiLxrOEx82iQYgYaBUwWVMri/\nbWKkeZfDvTUzBeew4LFT6NuLVckEfOa3vqPx8phU3V4wv9ZpkV25E7Hqp6A+FVGM\nDhzZdXqK/Le9iaV2V6tKkrSX0jadkPjpIRel4VhPdMFl4fQQNpDu3op2UwwvBJ1N\nFqJCEVVpAgMBAAECggEAAzC4M4drO85GDRSwPCymvf/rIZRfLNwo9bE5JVXp+v3B\nfmGeQpESeDoCVjQMQPAWOkjU9GPjZSk01QF/qheAk/2jFTcND55D4y03NRnIsi8I\nFDfSmeuQqagY5QZ5/fgN2RErz5y0NNRSd5nE7iT75ceamBvO+KEp7wwettGascaR\nGJYQDb3ptE8n25xkQejNU8gGbr+rdBptQb6D2PbyfxmZM8M0lgMHLO17BWOfMEe2\nGo7S/hzST7HbDCFP05yYCCz9/scfuxl48pcvllD6RzlsNm6ukFt071HC6bF2KpJ2\nezh46KHuipIHDnAAvdZbJ+fIW9qy/BwCpjFs06EPbQKBgQDvrkGGumL2ZYZ7CA0i\nT42ob3ixKok6hastbRhN+C+Jo0pi5f7Is6FdhBVQZXAKGYqTcS5PrgBM0LGgesiB\nDftdX0cdyD7+kniXjq85P+OQZyqdQpKmhswxSzVjDoWKPLpc/p1Y8YaXw7gnM88F\njFeSFBvCArwq4k9b51FJU6tjrQKBgQC6MKSmdQlZ9/LMhutgCogI64isDTg0J956\ngzRsT6FXah4O25aDEAqD3MbxpLg/0bGEwNxfhRorrNSf9QgCL924nStBPtLiwa1m\nbvY7O63tA4fykB4b5sWO2vwnsc7mY/DweBq96tUxPXrD9zAwDn7TZlyh7rZg7CoT\nKawoWE4QLQKBgBtLJa0Y9oIGh6zk+tHoa0I+B2ltZZkjdZ3DqZvfYlJzJNpkRIJI\nalzC2MaB9qM/y1cE8XgjYWdd8IxMzx5bID++xNNwZTQKK+9eUTfcvaZJCUJFPXv3\nJ7OJU/gGxFA8oCBM4lApmOEZaZQVQ0Lne2VoIs0SEKl1ggH+MnR+Mas1AoGAJnJ2\n/Xx7ct2VgJB3uDxUfOsOLOEJ8xMsiMXhJGCJI4DhNhY4DVZZpYMIfcuS1HLbolsk\n5oCYt94XhfRWNAVoVn/196Ieb/6obNeK9w5Kyv+IqhkCbqaHswkbOqMn40FN9ooG\nk6MTZPiaCi9X/wRvQf4IMNQXSwpZYd2gFDCv5f0CgYA4wZQMGOi08AW9HccZmc08\niMoBZ2U6EymG82oPSOEZ80mej1+gCzVUqlxuuSsTSkbX+Fa9h7WVfhkvSdh5tnyd\nB+jKWviVUF8iDX7ACv8gBnXvuyj2gWcroV8YlGgUljBMrqY1o1nlnzanBJGQZqeA\nB9hzo5BWQSmeNcv0+/qIqg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "gdsc-solution-shoppingguidedog@gdsc-solution-project-412006.iam.gserviceaccount.com",
+  "client_id": "114379121574509148947",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gdsc-solution-shoppingguidedog%40gdsc-solution-project-412006.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
