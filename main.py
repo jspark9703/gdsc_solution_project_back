@@ -19,6 +19,13 @@ class Review(BaseModel):
     title: str
     content: str
 
+class Filter(BaseModel):
+    title: str
+    content: List[str]
+    
+class Filter(BaseModel):
+    filter_list:List[Filter]
+
 class ReviewList(BaseModel):
     review_list: List[Review]
 
