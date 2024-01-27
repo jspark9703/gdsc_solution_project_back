@@ -2,3 +2,5 @@
 .myenv/
 
 credential/
+
+.env

@@ -1,11 +1,15 @@
 import warnings
+from typing import List
 
 import requests
 from bs4 import BeautifulSoup
+from pydantic import BaseModel
 from selenium.webdriver import ChromeOptions, Remote
 from selenium.webdriver.chromium.remote_connection import \
     ChromiumRemoteConnection
 from selenium.webdriver.common.by import By
+
+from models import Prod, ProdList, prodList
 
 warnings.filterwarnings("ignore", category=requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
@@ -36,6 +40,7 @@ def get_product_list(kwds:str):
             price = item.select_one(".price-value").text
             if not price:
                 continue
+            #TODO couponprice 추가
             link = item.a['href']
 
             rating = item.select_one(".rating-star")
@@ -49,12 +54,15 @@ def get_product_list(kwds:str):
 
             rating = rating.select_one(".rating").text
             
-            data_list.append({
+            data = Prod({
                 "name": name,
                 "price": price,
+                "coupon_price":"",
                 "rating": rating,
                 "rating_num": rating_num,
-                "link": link
-            })
+                "link": link})
+            data_list.append(data)
+    
 
-    return {"data": data_list}
+    return ProdList(prods=data_list)
+

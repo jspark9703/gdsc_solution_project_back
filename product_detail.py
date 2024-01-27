@@ -6,6 +6,8 @@ from pydantic import BaseModel
 from selenium.webdriver import ChromeOptions, Remote
 from selenium.webdriver.common.by import By
 
+from models import ProductDetail
+
 warnings.filterwarnings("ignore", category=requests.packages.urllib3.exceptions.InsecureRequestWarning)
 host = "brd.superproxy.io:22225"
 user_name = "brd-customer-hl_3250c65a-zone-unblocker"
@@ -19,15 +21,6 @@ proxies = {"http":proxy_url,"https":proxy_url}
 
 
 
-class ProductDetail(BaseModel):
-    brand: str
-    title: str
-    seller: str
-    prod_sale_price: str
-    prod_coupon_price: str
-    # prod_option_item: str
-    prod_description: str
-    
     
 def get_product_detail(url: str):
     
