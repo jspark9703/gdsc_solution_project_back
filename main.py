@@ -1,11 +1,10 @@
 
 from fastapi import FastAPI, HTTPException
 
-from models import FilterList, ReviewList, UserUrl
 from product_detail import get_product_detail
 from product_list import get_product_list
-from product_reviewlist import get_reviews
 from review_sum import review_sum
+from utils.models import FilterList, UserUrl
 
 app = FastAPI()
 
@@ -14,16 +13,67 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
+@app.get("/filters")
+async def filter_list(kwds:str):
+    return {
+  "filter_list": [
+    {
+      "title": "종류",
+      "classname": "search-attr_13100-filter",
+      "content": [
+        {
+          "value": "소",
+          "id": "attr26615"
+        },
+        {
+          "value": "돼지",
+          "id": "attr26616"
+        }
+      ]
+    },
+    {
+      "title": "총 중량",
+      "classname": "search-attr_7943-filter",
+      "content": [
+        {
+          "value": "300g 이하",
+          "id": "attr25132"
+        },
+        {
+          "value": "300~500g",
+          "id": "attr25133"
+        },
+				{
+          "value": "500~700g",
+          "id": "attr25134"
+        },
+				{
+          "value": "700~1kg",
+          "id": "attr25135"
+        },
+				{
+          "value": "1kg~3kg",
+          "id": "attr25136"
+        },
+				{
+          "value": "3kg 이상",
+          "id": "attr25137"
+        }
+      ]
+    }
+  ]
+}
+
 #TODO FILTER 리스트 받고 카테고리 URL에 전달
 @app.get("/prods/")
 async def search_prod(kwds:str,filter_list:FilterList):
-    return get_product_list(kwds, filter_list)
+    return {"data":get_product_list(kwds, filter_list)}
 
 @app.get("/prod_detail")
 async def prod_detail(user_produrl:UserUrl):
     try:
         result = get_product_detail(user_produrl.url)
-        return result
+        return {"data":result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -31,13 +81,11 @@ async def prod_detail(user_produrl:UserUrl):
 @app.get("/prod_review")
 async def prod_review(user_url:UserUrl):
     try:
-        result = get_reviews(user_url.url)
-        return result
+        result =  review_sum(user_url)
+        return {"data":result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
-@app.get("/review_sum")
-async def review_summury(userinfo:str,review_list:ReviewList ):
-    return {"data":review_sum(userinfo,review_list)}
+
 
 

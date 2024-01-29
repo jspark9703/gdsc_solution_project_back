@@ -1,11 +1,12 @@
-from bs4 import BeautifulSoup
-from typing import Optional, Union, Dict, List
-import time
+import json
 import os
 import re
-import requests as req
-import json
+import time
+from typing import Dict, List, Optional, Union
+
 import pandas as pd
+import requests as req
+from bs4 import BeautifulSoup
 
 
 def get_headers(
@@ -13,7 +14,7 @@ def get_headers(
         default_value: Optional[str] = None
 ) -> Union[dict[str, str], str]:
     """ Get Headers """
-    JSON_FILE: str = 'json/headers.json'
+    JSON_FILE: str = 'utils/json/headers.json'
 
     with open(JSON_FILE, 'r', encoding='UTF-8') as file:
         headers: Dict[str, Dict[str, str]] = json.loads(file.read())
@@ -26,7 +27,7 @@ def get_headers(
         raise EnvironmentError(f'Set the {key}')
 
 
-class Coupang:
+class Coupang():
     @staticmethod
     def get_product_code(url: str) -> str:
         """ 입력받은 URL 주소의 PRODUCT CODE 추출하는 메소드 """
@@ -35,31 +36,31 @@ class Coupang:
 
     def __init__(self) -> None:
         self.__headers: Dict[str, str] = get_headers(key='headers')
-        # MAX_REVIEWS_PER_URL = 
+        # MAX_REVIEWS_PER_URL =
 
-    def main(self) -> List[List[Dict[str, Union[str, int]]]]:
+    def main(self,url) -> List[List[Dict[str, Union[str, int]]]]:
         
         # To do: for문 안에 넣고 url 리스트를 사용하여 한 번에 입력 받아 다수의 리뷰 추출
         # URL 주소
-        URL: str = self.input_review_url()
-
+        # URL: str = self.input_review_url()
+        URL = url
         # URL의 Product Code 추출
         prod_code: str = self.get_product_code(url=URL)
 
-        # URL 주소 재가공
+        # URL 주소 재가공 size 10
         URLS: List[str] = [
             f'https://www.coupang.com/vp/product/reviews?productId={prod_code}&page={page}&size=5&sortBy=ORDER_SCORE_ASC&ratings=&q=&viRoleCode=3&ratingSummary=true'
-            for page in range(1, self.input_page_count() + 1)]
+            for page in range(1, 3)]
 
         # __headers에 referer 키 추가
-        self.__headers['referer'] = URL
+        self.__headers['referer'] = URL.encode('utf-8')
 
         with req.Session() as session:
             return [self.fetch(url=url, session=session) for url in URLS]
 
     def fetch(self, url: str, session) -> List[Dict[str, Union[str, int]]]:
-        save_data: List[Dict[str, Union[str, int]]] = list()
-
+        save_data: List[Dict[str, Union[str, int]]] =list()
+        
         with session.get(url=url, headers=self.__headers) as response:
             html = response.text
             soup = BeautifulSoup(html, 'html.parser')
@@ -127,13 +128,12 @@ class Coupang:
                 # To do: 도움이 됨 데이터 추출
 
                 # 원본 URL 
-                dict_data['prod_name'] = prod_name
                 dict_data['user_name'] = user_name
                 dict_data['rating'] = rating
                 dict_data['headline'] = headline
                 dict_data['review_content'] = review_content
-                dict_data['answer'] = answer
-
+                
+                
                 save_data.append(dict_data)
 
                 # print(dict_data, '\n')
