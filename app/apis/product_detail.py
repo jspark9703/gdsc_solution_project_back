@@ -2,17 +2,16 @@ import warnings
 
 import requests
 from bs4 import BeautifulSoup
-
 from utils.models import ProductDetail
 
 warnings.filterwarnings("ignore", category=requests.packages.urllib3.exceptions.InsecureRequestWarning)
-host = "brd.superproxy.io:22225"
-user_name = "brd-customer-hl_3250c65a-zone-unblocker"
-password = "keckdpm31tj0"
+# host = "brd.superproxy.io:22225"
+# user_name = "brd-customer-hl_3250c65a-zone-unblocker"
+# password = "keckdpm31tj0"
 
-proxy_url = f"https://{user_name}:{password}@{host}"
+# proxy_url = f"https://{user_name}:{password}@{host}"
 
-proxies = {"http":proxy_url,"https":proxy_url}
+# proxies = {"http":proxy_url,"https":proxy_url}
 
 
 
@@ -21,7 +20,7 @@ proxies = {"http":proxy_url,"https":proxy_url}
     
 def get_product_detail(url: str):
     
-    response = requests.get(f"https://www.coupang.com{url}", proxies=proxies, verify=False)
+    response = requests.get(f"https://www.coupang.com{url}")
     print(f"https://www.coupang.com{url}")
     print(response.status_code)
     html = response.text
@@ -85,4 +84,5 @@ def get_product_detail(url: str):
     )
 
     return product_detail.dict()
+
 

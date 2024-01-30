@@ -1,9 +1,8 @@
 
+from apis.product_detail import get_product_detail
+from apis.product_list import get_product_list
+from apis.review_sum import review_sum
 from fastapi import FastAPI, HTTPException
-
-from product_detail import get_product_detail
-from product_list import get_product_list
-from review_sum import review_sum
 from utils.models import FilterList, UserUrl
 
 app = FastAPI()
