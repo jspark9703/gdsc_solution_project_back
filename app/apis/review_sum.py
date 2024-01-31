@@ -1,29 +1,24 @@
+from credential.credential import OPENAI_API_KEY
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts.chat import (ChatPromptTemplate,
                                     HumanMessagePromptTemplate,
                                     SystemMessagePromptTemplate)
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
-from langchain_core.runnables import RunnablePassthrough, RunnableSequence
-from pydantic import BaseModel
-
-from credential.credential import OPENAI_API_KEY
-from utils.models import UserUrl
-from utils.product_reviews import get_reviews
+from utils.models import ReviewList, UserUrl
 
 #CONTEXT 지정하여 제공
 context = "맛, 조리방법의 간단함, 양과 실용성, 제품의 신선도, 원재료 생산지 "
 
 
-def review_sum(user_url:UserUrl):
+def get_review_sum(user_url:UserUrl, review_list:ReviewList):
     
     
     user_info=user_url.user.user_info
     
-    url = user_url.url
+
     
-    review_list = get_reviews(f"https://www.coupang.com{url}")
     
-    review_list_soup = ' || '.join(review['review_content'] for review in review_list)
+    review_list_soup = ' || '.join(review['review'] for review in review_list)
 
     
     #TODO USERINFO JOIN, CONTEXT 결정, REVIEWLIST 크기 제한

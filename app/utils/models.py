@@ -13,46 +13,43 @@ class UserUrl(BaseModel):
     url:str
 
 class Prod(BaseModel):
+    link: str
     name : str
     price : str
-    coupon_price :str
-    rating: int
+    dimm :str
     rating_num :int
-    link: str
+    
     
 class ProdList(BaseModel):
     prods: List[Prod]
     
-
+class Item(BaseModel):
+    item_cate:str
+    item_name:str
+    item_content:str
 
 class ProductDetail(BaseModel):
     prod_img_url:str
-    brand: str
     title: str
-    seller: str
-    prod_sale_price: str
-    prod_coupon_price: str
-    # prod_option_item: str
-    prod_description: str
+    sub_title: str
+    price: str
+    dimm_price:str
+    description:str    # prod_option_item: str
+    details:List[Item]
+    
     
 class Review(BaseModel):
     user_name: str
-    rating: str
-    headline: str
-    review_content: str
+    review: str
     
 
 class ReviewList(BaseModel):
     review_list: List[Review]
 
-class FilterContent(BaseModel):
-    value:str
-    id:str
     
 class Filter(BaseModel):
     title: str
-    classname: str
-    content: List[FilterContent]
+    url:str
     
 
     

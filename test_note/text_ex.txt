@@ -133,3 +133,43 @@ filter=
 420151 %23 
     attr_7943 %24 25617
 
+
+prod_list
+[{'link': 'https://www.kurly.com/goods/5156890', 'name': '양파 900g', 'price': '3,290원', 'dimm': '', 'review': '9,999+'}, {'link': 'https://www.kurly.com/goods/5026451', 'name': '양파 1.5kg', 'price': '4,490원', 'dimm': '', 'review': '9,999+'}, {'link': 'https://www.kurly.com/goods/5049920', 'name': '[KF365] 양파 1.8kg', 'price': '4,590원', 'dimm': '4,990원', 'review': '9,999+'}, {'link': 'https://www.kurly.com/goods/5067935', 'name': '깐 양파 2입 500g', 'price': '2,990원', 'dimm': '', 'review': '9,999+'}, {'link': 'https://www.kurly.com/goods/5000072', 'name': '친환경 양파 500g', 'price': '2,990원', 'dimm': '', 'review': '9,999+'}, {'link': 'https://www.kurly.com/goods/5003461', 'name': '친환경 양파 1kg', 'price': '3,890원', 'dimm': '', 'review': '9,999+'}, {'link': 'https://www.kurly.com/goods/5152797', 'name': '친환경 깐 양파 200g', 'price': '2,990원', 'dimm': '', 'review': '999+'}, {'link': 'https://www.kurly.com/goods/5125770', 'name': '뚝딱! 양파 500g (냉동)', 'price': '3,590원', 'dimm': '', 'review': '999+'}, {'link': 'https://www.kurly.com/goods/5056796', 'name': '유기농 양파 1.5kg', 'price': '6,990원', 'dimm': '', 'review': '9,999+'}]
+
+detail
+{'title': '[쉐푸드] 제육에그참치 유부초밥',
+ 'sub_title': '세 가지 고소함을 더한 유부초밥',
+ 'price': '3,980원',
+ 'description': '쉐푸드는 롯데푸드에서 운영하는 가정 간편식 브랜드예요. 전문 셰프의 노하우를 담아 알차고 든든한 한 끼 요리를 선보이고 있죠. 지금 소개하는 제품은 고소한 맛의 세 가지 토핑이 올라간 유부초밥이에요. 제육볶음과 참치마요네즈, 그리고 에그샐러드까지, 담백하면서도 고소한 토핑을 얹어 풍성하게 완성했죠. 다른 반찬을 준비하지 않아도 든든하니, 바쁜 일상 중에 간단히 챙겨 즐겨보세요.',
+ 'details': [{'item_cate': '배송',
+   'item_name': '샛별배송',
+   'item_content': '23시 전 주문 시 내일 아침 7시 전 도착\n(대구·부산·울산 샛별배송 운영시간 별도 확인)'},
+  {'item_cate': '판매자', 'item_name': '컬리', 'item_content': None},
+  {'item_cate': '포장타입',
+   'item_name': '냉장 (종이포장)',
+   'item_content': '택배배송은 에코 포장이 스티로폼으로 대체됩니다.'},
+  {'item_cate': '판매단위', 'item_name': '1팩', 'item_content': None},
+  {'item_cate': '중량/용량', 'item_name': '234g', 'item_content': None},
+  {'item_cate': '알레르기정보',
+   'item_name': '-알류(달걀),우유,대두,밀,돼지고기,쇠고기 함유\n-이 제품은 알류(메추리알),메밀,땅콩,고등어,게,새우,복숭아,토마토,아황산류,호두,닭고기,오징어,조개류(굴,전복,홍합포함),잣을 사용한 제품과 같은 제조시설에서 제조',
+   'item_content': None},
+  {'item_cate': '소비기한(또는 유통기한)정보',
+   'item_name': '당일 소비기한 상품으로 빠른 섭취 혹은 냉장 보관 부탁드립니다.',
+   'item_content': None},
+  {'item_cate': '상품선택', 'item_name': None, 'item_content': None}],
+ 'tips': ['보관법\n・수령 후에 바로 드실 것을 권장해 드립니다.\n・바로 드실 게 아니라면 냉장 보관해주시되, 가급적 빨리 섭취해주세요.',
+  '조리법\n・전자레인지에 약 30초~1분간 데워 더욱 따뜻하게 즐겨보세요.']}
+
+  filter
+  {
+  "filter_list": [
+    {"title": "간편식 밀키트 샐러드", "link": "</collection-groups/market-best?page=1&amp;collection=market-best&amp;filters=category%3A912"},
+    {title, link}
+        ]
+}
+  
+  review
+  "review_list": [
+    {"name": "김**", "review": "sdfsjdlkfjsldfjsdfljsldjlfsdkjfljsdfljdsfksldlfskdlj"},{"name": "qkr**", "review": "sdfsjdlkfjsldfjsdffdsajsldjlfsdkjfljsdfljdsfksldlfskdlj"}
+]
