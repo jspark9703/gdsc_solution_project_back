@@ -64,7 +64,6 @@ async def root():
 #   ]
 # }
 
-#TODO FILTER 리스트 받고 카테고리 URL에 전달
 @app.get("/prods")
 async def search_prod(kwds:str):
     return {"data":get_product_list(kwds)}
