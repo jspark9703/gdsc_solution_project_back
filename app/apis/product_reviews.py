@@ -1,7 +1,7 @@
 
 from typing import List
 
-from utils.models import Review
+from models import Review
 
 
 #TODO 리뷰

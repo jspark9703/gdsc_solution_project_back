@@ -4,7 +4,7 @@ from langchain.prompts.chat import (ChatPromptTemplate,
                                     HumanMessagePromptTemplate,
                                     SystemMessagePromptTemplate)
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
-from utils.models import ReviewList, UserUrl
+from models import ReviewList, UserUrl
 
 #CONTEXT 지정하여 제공
 context = "맛, 조리방법의 간단함, 양과 실용성, 제품의 신선도, 원재료 생산지 "

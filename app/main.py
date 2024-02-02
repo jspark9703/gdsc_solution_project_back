@@ -1,10 +1,12 @@
 
-from apis.review_sum import get_review_sum, review_sum
+
 from fastapi import FastAPI, HTTPException
+from models import UserUrl
+
 from product_detail import get_product_detail
-from product_list import get_product_list
 from product_reviews import get_reviews
-from utils.models import FilterList, UserUrl
+from review_sum import get_review_sum
+
 
 app = FastAPI()
 
@@ -66,7 +68,7 @@ async def root():
 
 @app.get("/prods")
 async def search_prod(kwds:str):
-    return {"data":get_product_list(kwds)}
+    return {"data":get_product_detail(kwds)}
 
 @app.get("/prod_detail")
 async def prod_detail(user_produrl:UserUrl):

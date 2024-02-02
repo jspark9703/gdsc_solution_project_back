@@ -7,8 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-from app.main import prod_detail
-from app.utils.models import Item, ProductDetail
+from models import Item, ProductDetail
 
 
 def get_product_detail(url:str):
