@@ -25,13 +25,10 @@ async def get_filters():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.get("/prods")
-async def search_prod(kwds:str,is_best_url :str|None):
+@app.get("/search_prod")
+async def search_prod(kwds:str|None = None,is_best_url :str| None = None):
     try:
-        
-        if is_best_url =="" or not "https" in is_best_url:
-            is_best_url = None
-        result = get_product_list(kwds,is_best_url=is_best_url)
+        result = get_product_list(kwds,is_best_url)
         return {"data" :result}
     except  Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

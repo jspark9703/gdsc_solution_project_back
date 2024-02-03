@@ -29,14 +29,21 @@ def get_product_detail(url:str):
 
     time.sleep(2)
 
-    section = driver.find_element(By.CSS_SELECTOR,".e17iylht3")
-    details= section.find_elements(By.CSS_SELECTOR,".epzddad2")
     
+    section = driver.find_element(By.CSS_SELECTOR,".e17iylht3")
     title = section.find_element(By.CSS_SELECTOR,".ezpe9l11").text
     sub_title = section.find_element(By.CSS_SELECTOR,".ezpe9l10").text
     price = section.find_element(By.CSS_SELECTOR,".e1q8tigr4").text.replace("\n","")
-    dimm_price = section.find_element(By.CSS_SELECTOR,".e1q8tigr0").text.replace("\n","")
+    
+    try:
+        dimm_price = section.find_element(By.CSS_SELECTOR,".e1q8tigr0").text.replace("\n","")
+
+    except NoSuchElementException:
+        dimm_price =""
+    
+    
     detail_list = []
+    details= section.find_elements(By.CSS_SELECTOR,".epzddad2")
 
     for detail in details:
         
@@ -44,16 +51,16 @@ def get_product_detail(url:str):
             item_cate = detail.find_element(By.CSS_SELECTOR,".epzddad1").text
 
         except NoSuchElementException:
-            item_cate = None
+            item_cate = ""
         
         try:
             item_name = detail.find_element(By.CSS_SELECTOR,".e6qx2kx1").text
         except NoSuchElementException:
-            item_name = None
+            item_name = ""
         try:
             item_content = detail.find_element(By.CSS_SELECTOR,".e6qx2kx0").text
         except NoSuchElementException:
-            item_content = None
+            item_content = ""
 
 
         item = Item(
@@ -64,19 +71,35 @@ def get_product_detail(url:str):
         detail_list.append(item)
 
 
+    try:
+        des = driver.find_element(By.CSS_SELECTOR,".context.last")
+        des = des.find_element(By.CSS_SELECTOR,"p.words").text
+    except NoSuchElementException:
+        des = ""
     
-    des = driver.find_element(By.CSS_SELECTOR,".context.last")
-    des = des.find_element(By.CSS_SELECTOR,"p.words").text
-    tip_box = driver.find_element(By.CSS_SELECTOR,".tip_box")
-
-    tip_contents = tip_box.find_elements(By.CSS_SELECTOR,".words")
-
     tips = []
-    for content in tip_contents:
-        tips.append(content.text)
+    try:
+        tip_box = driver.find_element(By.CSS_SELECTOR,".tip_box")
+        tip_contents = tip_box.find_elements(By.CSS_SELECTOR,".words")
+        
+        for content in tip_contents:
+            tips.append(content.text)
+    except NoSuchElementException:
+        tips = []
+    
+    
 
-    img_link= driver.find_element(By.CSS_SELECTOR,".goods_intro")
-    img_link = img_link.find_element(By.CSS_SELECTOR,"img").get_attribute("src")
+    try:
+        img_link= driver.find_element(By.CSS_SELECTOR,".goods_intro")
+        img_link = img_link.find_element(By.CSS_SELECTOR,"img").get_attribute("src")
+        
+        
+    except NoSuchElementException:
+        img_link = ""
+
+    
+    
+    
     data = ProductDetail(
         details= detail_list,
         description=des,

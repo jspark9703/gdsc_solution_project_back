@@ -17,7 +17,7 @@ class Prod(BaseModel):
     name : str
     price : str
     dimm :str
-    rating_num :int
+    rating_num :str
     
     
 class ProdList(BaseModel):

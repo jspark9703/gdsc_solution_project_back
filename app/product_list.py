@@ -22,7 +22,7 @@ from models import Prod, ProdList
 
 
     
-def get_product_list(kwds: str, is_best_url:str | None):
+def get_product_list(kwds: str|None=None, is_best_url:str | None =None):
     
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
@@ -35,10 +35,10 @@ def get_product_list(kwds: str, is_best_url:str | None):
     options.add_argument("cookie=" + "PCID=31489593180081104183684; _fbp=fb.1.1644931520418.1544640325; gd1=Y; X-CP-PT-locale=ko_KR; MARKETID=31489593180081104183684; sid=03ae1c0ed61946c19e760cf1a3d9317d808aca8b; x-coupang-origin-region=KOREA; x-coupang-target-market=KR; x-coupang-accept-language=ko_KR;")
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)   
-    if is_best_url :
-        url= is_best_url
+    if kwds ==None :
+        url= f"https://www.kurly.com/{is_best_url}"
     else :
-        url =  f"https://www.kurly.com/search?sword={kwds}"
+        url = f"https://www.kurly.com/search?sword={kwds}"
     driver.get(url)
     time.sleep(1)
 
