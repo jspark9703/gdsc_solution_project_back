@@ -1,7 +1,7 @@
 
 
-from fastapi import FastAPI, HTTPException
-from models import UserUrl
+from fastapi import FastAPI, HTTPException,Response
+from models import Review, ReviewList, UserUrl
 from fillters import get_best_filters
 from product_list import get_product_list
 from product_detail import get_product_detail
@@ -17,7 +17,8 @@ async def root():
     return {"message": "Hello World"}
 
 @app.get("/best_filter")
-async def get_filters():
+async def get_filters(response:Response):
+    response.headers["Access-Control-Allow-Origin"]="http://localhost:55045"
     try:
         result = get_best_filters()
         return {"data": result}
@@ -44,15 +45,23 @@ async def prod_detail(user_produrl:UserUrl):
 
 
 #TODO 리뷰 전처리과정 추가
-@app.get("/prod_review")
-async def prod_review(user_url:UserUrl):
+@app.get("/prod_reviews")
+async def prod_reviews(user_url:UserUrl):
     try:
         review_list = get_reviews(user_url.url)
-        review_sum =  get_review_sum(user_url,review_list=review_list)
-        return {"review_list":review_list,"review_sum":review_sum}
+        return {"review_list":review_list}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
 
 
+
+@app.get("/review_sum")
+async def prod_review_sum(user_url:UserUrl,review_list: ReviewList):
+    try:
+        review_sum = get_review_sum(user_url, review_list)
+        return {"review_sum":review_sum}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
 

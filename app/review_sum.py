@@ -1,10 +1,10 @@
+from typing import List
 from credential.credential import OPENAI_API_KEY
 from langchain.chat_models import ChatOpenAI
-from langchain.prompts.chat import (ChatPromptTemplate,
-                                    HumanMessagePromptTemplate,
-                                    SystemMessagePromptTemplate)
-from langchain.schema import AIMessage, HumanMessage, SystemMessage
-from models import ReviewList, UserUrl
+from langchain.prompts.chat import (ChatPromptTemplate
+                                    )
+from langchain.schema import  HumanMessage, SystemMessage
+from models import  ReviewList, UserUrl
 
 #CONTEXT 지정하여 제공
 context = "맛, 조리방법의 간단함, 양과 실용성, 제품의 신선도, 원재료 생산지 "
@@ -14,9 +14,9 @@ def get_review_sum(user_url:UserUrl, review_list:ReviewList):
     
     
     user_info=user_url.user.user_info
+   
     
-    
-    review_list_soup = ' || '.join(review['review'] for review in review_list)
+    review_list_soup = '||'.join(review.review for review in review_list.review_list)
 
     
     #TODO USERINFO JOIN, CONTEXT 결정, REVIEWLIST 크기 제한
@@ -30,22 +30,27 @@ def get_review_sum(user_url:UserUrl, review_list:ReviewList):
     chat_template = ChatPromptTemplate.from_messages( [
         SystemMessage(
             content = '''
-            당신은 식품 관련 상품 리뷰 요약 프로그램입니다. 아래의 user ,context를 참고하여 ||로 구분된 리뷰들의 장점과 단점을 잘 파악하여 형식에 맞게 요약해주세요.
-            user은 구매자의 건강 상태 또는 구매자의 희망 사항 입니다.
-            context은 구매자가 생각하는 상품의 중요사항 입니다.
-            요약할 때 리뷰들의 구체적인 내용과 예시를 추가하여 구매자가 충분히 납득할 수있게 설명하세요.
-
+            당신은 식품 관련 상품 리뷰 요약 프로그램입니다. 
+            아래의 user ,context를 참고하세요
+            
             user: {userinfo}
             context: {context}
 
+            user은 구매자의 희망 사항 입니다.
+            context은 구매자가 생각하는 상품의 중요사항 입니다.
+            
+            아래 규칙에 맞추어 user와 context를 최대한 반영한 리뷰 요약을 해주세요.
+            1. 아래의 답변 형식에 맞추어 리뷰를 요약합니다.
+                답변 형식:
+                    장점:
 
-            답변 형식:
-                장점:
+                    단점:
 
-                단점:
-
-                종합 리뷰:
-
+                    종합 리뷰:
+                
+            2.  장점에는 리뷰들의 공통적인 긍정적인 의견
+                단점에는 리뷰들의 공통적인 부정적인 의견
+                종합 리뷰에는 장점과 단점을 잘 요약하여 상품을 살 때 주의사항도 언급하여 주세요.
             '''
         ),
         HumanMessage(
@@ -58,4 +63,4 @@ def get_review_sum(user_url:UserUrl, review_list:ReviewList):
 
     result= chain.invoke({"userinfo":user_info,"context":context, "review_list":review_list_soup})
     
-    return {"review":review_list ,"review_sum": result.content}
+    return result.content

@@ -21,23 +21,22 @@ def get_best_filters():
     options.add_argument("cookie=" + "PCID=31489593180081104183684; _fbp=fb.1.1644931520418.1544640325; gd1=Y; X-CP-PT-locale=ko_KR; MARKETID=31489593180081104183684; sid=03ae1c0ed61946c19e760cf1a3d9317d808aca8b; x-coupang-origin-region=KOREA; x-coupang-target-market=KR; x-coupang-accept-language=ko_KR;")
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)   
-    driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best&filters=")
-    
-    
-    time.sleep(2)
+    try:
+        driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best&filters=")
+        time.sleep(2)  # 페이지 로딩 대기
 
+        # 필터 정보 스크래핑
+        li = driver.find_elements(By.CSS_SELECTOR, ".e1isxf3i1")
+        for index, item in enumerate(li):
+            if index >= 8:  # 최대 8개의 필터만 처리
+                break
+            title = item.find_element(By.CSS_SELECTOR, ".ee933652").text
+            num = item.find_element(By.CSS_SELECTOR, ".ee933651").text
+            url = item.find_element(By.CSS_SELECTOR, ".e1isxf3i0").get_attribute("href")
+            filter_list.append(Filter(num=num, title=title, url=url))
 
-    li = driver.find_elements(By.CSS_SELECTOR,".e1isxf3i1")
-    
-    for item in li:
-        title = item.find_element(By.CSS_SELECTOR,".ee933652").text
-        num = item.find_element(By.CSS_SELECTOR,".ee933651").text
-        url = item.find_element(By.CSS_SELECTOR,".e1isxf3i0").get_attribute("href")
-        filter_list.append(Filter(num=num,title=title,url=url))
-        
-        
-    return FilterList(
-        filter_list=filter_list
-    )
+        return FilterList(filter_list=filter_list)
+    finally:
+        driver.quit()  # WebDriver 종료
     
     

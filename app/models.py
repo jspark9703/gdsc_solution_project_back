@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 class User(BaseModel):
     user_name:str
-    user_class:int
+    user_class:str
     user_info:str
     
 class UserUrl(BaseModel):
@@ -39,7 +39,8 @@ class ProductDetail(BaseModel):
     
     
 class Review(BaseModel):
-    user_name: str
+    name: str
+    url:str | None = None
     review: str
     
 

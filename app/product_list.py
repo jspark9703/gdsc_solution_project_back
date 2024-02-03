@@ -36,7 +36,7 @@ def get_product_list(kwds: str|None=None, is_best_url:str | None =None):
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)   
     if kwds ==None :
-        url= f"https://www.kurly.com/{is_best_url}"
+        url= is_best_url
     else :
         url = f"https://www.kurly.com/search?sword={kwds}"
     driver.get(url)
