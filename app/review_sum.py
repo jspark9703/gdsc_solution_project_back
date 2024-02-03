@@ -15,8 +15,6 @@ def get_review_sum(user_url:UserUrl, review_list:ReviewList):
     
     user_info=user_url.user.user_info
     
-
-    
     
     review_list_soup = ' || '.join(review['review'] for review in review_list)
 

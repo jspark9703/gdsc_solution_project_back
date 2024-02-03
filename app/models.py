@@ -49,6 +49,7 @@ class ReviewList(BaseModel):
     
 class Filter(BaseModel):
     title: str
+    num:str
     url:str
     
 
