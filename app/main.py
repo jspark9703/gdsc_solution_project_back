@@ -1,5 +1,6 @@
 
 
+from typing import Optional
 from fastapi import FastAPI, HTTPException,Response
 from models import Review, ReviewList, UserUrl
 from fillters import get_best_filters
@@ -32,7 +33,7 @@ async def get_filters():
 
 
 @app.get("/search_prod")
-async def search_prod(kwds:str|None = None, is_best_url :str| None = None):
+async def search_prod(kwds:Optional[str] = None, is_best_url :Optional[str] = None):
     
     print(kwds)
     print(is_best_url)

@@ -1,4 +1,5 @@
 import time
+from typing import Optional
 
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
@@ -22,7 +23,7 @@ from models import Prod, ProdList
 
 
     
-def get_product_list(kwds: str|None=None, is_best_url:str | None =None):
+def get_product_list(kwds:Optional[str] = None, is_best_url:Optional[str] = None):
     
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
