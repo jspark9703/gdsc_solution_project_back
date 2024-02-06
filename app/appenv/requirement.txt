@@ -1,0 +1,5 @@
+langchain == 0.0.332
+fastapi == 0.67.0
+selenium == 4.15.2
+beautifulsoup4 == 4.12.2
+webdriver_manager == 4.0.1cd
