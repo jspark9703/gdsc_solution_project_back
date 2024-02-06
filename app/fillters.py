@@ -23,7 +23,7 @@ def get_best_filters():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)   
     try:
         driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best&filters=")
-        time.sleep(2)  # 페이지 로딩 대기
+        time.sleep(1)  # 페이지 로딩 대기
 
         # 필터 정보 스크래핑
         li = driver.find_elements(By.CSS_SELECTOR, ".e1isxf3i1")
