@@ -55,9 +55,9 @@ async def prod_detail(produrl:str):
 
 #TODO 리뷰 전처리과정 추가
 @app.get("/prod_reviews")
-async def prod_reviews(user_url:UserUrl):
+async def prod_reviews(url:str):
     try:
-        review_list = get_reviews(user_url.url)
+        review_list = get_reviews(url)
         return {"data":review_list}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -66,9 +66,9 @@ async def prod_reviews(user_url:UserUrl):
 
 
 @app.get("/review_sum")
-async def prod_review_sum(user_url:UserUrl,review_list: ReviewList):
+async def prod_review_sum(user_info:str ,review_list: ReviewList):
     try:
-        review_sum = get_review_sum(user_url, review_list)
+        review_sum = get_review_sum(user_info, review_list)
         return {"data":review_sum}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
