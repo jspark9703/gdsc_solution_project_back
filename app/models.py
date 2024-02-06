@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -40,7 +40,7 @@ class ProductDetail(BaseModel):
     
 class Review(BaseModel):
     name: str
-    url:str | None = None
+    url: Optional[str] = None 
     review: str
     
 
