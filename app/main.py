@@ -44,9 +44,9 @@ async def search_prod(kwds:str|None = None, is_best_url :str| None = None):
 
 
 @app.get("/prod_detail")
-async def prod_detail(user_produrl:UserUrl):
+async def prod_detail(produrl:str):
     try:
-        result = get_product_detail(user_produrl.url)
+        result = get_product_detail(produrl)
         return {"data":result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
