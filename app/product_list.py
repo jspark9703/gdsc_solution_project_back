@@ -46,6 +46,7 @@ def get_product_list(kwds:Optional[str] = None, is_best_url:Optional[str] = None
     items= driver.find_elements(By.CSS_SELECTOR,".e1c07x4813")
     detail_list = []
     for item in items:
+        
         prod_link = item.get_attribute(name="href")
         name = item.find_element(By.CSS_SELECTOR,".e1c07x488").text
         price = item.find_element(By.CSS_SELECTOR,".sales-price").text

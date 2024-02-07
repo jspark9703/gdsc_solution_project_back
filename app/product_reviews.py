@@ -1,7 +1,7 @@
 
 from typing import List
 
-from models import Review
+from models import Review, ReviewList
 
 import time
 
@@ -77,4 +77,4 @@ def get_reviews(url:str):
         for review in temp:
             review_list.append(review)
 
-    return review_list
+    return ReviewList(review_list=review_list)
