@@ -34,7 +34,7 @@ def get_review(driver):
 
     review_length = len(soup.select('.css-y49dcn'))
 
-    data = make_review_data_structure(review_length)
+    data = make_review_data_structure(15)
 
     for i in range(review_length):
         review_list = soup.select('.css-169773r')

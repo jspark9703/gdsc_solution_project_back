@@ -28,7 +28,7 @@ def get_best_filters():
         # 필터 정보 스크래핑
         li = driver.find_elements(By.CSS_SELECTOR, ".e1isxf3i1")
         for index, item in enumerate(li):
-            if index >= 8:  # 최대 8개의 필터만 처리
+            if index >= 10:  # 최대 10개의 필터만 처리
                 break
             title = item.find_element(By.CSS_SELECTOR, ".ee933652").text
             num = item.find_element(By.CSS_SELECTOR, ".ee933651").text
