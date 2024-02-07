@@ -36,7 +36,7 @@ def get_review(driver):
 
     data = make_review_data_structure(15)
 
-    for i in range(review_length):
+    for i in range(15):
         review_list = soup.select('.css-169773r')
         name = review_list[i].select_one('.css-f3vz0n').text
         data[i]['name'] = name
