@@ -65,7 +65,7 @@ async def prod_reviews(url:str):
 
 
 
-@app.get("/review_sum")
+@app.post("/review_sum")
 async def prod_review_sum(user_info:str ,review_list: ReviewList):
     try:
         review_sum = get_review_sum(user_info, review_list)

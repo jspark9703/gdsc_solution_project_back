@@ -39,9 +39,10 @@ def get_review_sum(user_info:str , review_list:ReviewList):
             context은 구매자가 생각하는 상품의 중요사항 입니다.
             
             아래 규칙에 맞추어 user와 context를 최대한 반영한 리뷰 요약을 해주세요.
+            리뷰요약은 구체적으로 작성하세요.
             
-            1.  장점에는 리뷰들의 공통적인 긍정적인 의견
-                단점에는 리뷰들의 공통적인 부정적인 의견
+            1.  장점에는 긍정적인 의견,
+                단점에는 부정적인 의견,
                 종합 리뷰에는 장점과 단점을 잘 요약하고 review들의 다수의 의견을 언급하고 상품을 살 때 주의사항도 언급하여 주세요.
                 
                 
@@ -54,7 +55,7 @@ def get_review_sum(user_info:str , review_list:ReviewList):
             
             3. 한국말(korean)로 번역해주세요.
             
-            4. 결과가 300자 이내로 답해주세요.
+            4. 결과가 450자 이내로 답해주세요.
             
             5. reviewlist에 대한 언급은 하지마세요.
             
@@ -70,5 +71,7 @@ def get_review_sum(user_info:str , review_list:ReviewList):
     chain =  chat_template  |llm
 
     result= chain.invoke({"userinfo":user_info,"context":context, "review_list":review_list_soup})
+    
+    print(result.content)
     
     return result.content
