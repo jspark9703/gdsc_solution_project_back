@@ -1,5 +1,5 @@
 .env
 
-.app/credential/
+app/credential/
 
-.test_note/
+test_note/
