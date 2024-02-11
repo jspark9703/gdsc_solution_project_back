@@ -20,7 +20,7 @@ def get_best_filters():
     options.add_argument("sec-ch-ua-platform=" + "macOS")
     options.add_argument("cookie=" + "PCID=31489593180081104183684; _fbp=fb.1.1644931520418.1544640325; gd1=Y; X-CP-PT-locale=ko_KR; MARKETID=31489593180081104183684; sid=03ae1c0ed61946c19e760cf1a3d9317d808aca8b; x-coupang-origin-region=KOREA; x-coupang-target-market=KR; x-coupang-accept-language=ko_KR;")
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)   
+    driver = webdriver.Chrome(service=Service("/usr/local/bin/chromedriver"), options=options)
     try:
         driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best&filters=")
         time.sleep(1)  # 페이지 로딩 대기

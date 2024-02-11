@@ -1,6 +1,5 @@
 runtime: custom
 env: flex
-entrypoint: uvicorn main:app --host=0.0.0.0 --port=$PORT
 
 runtime_config:
   python_version: 3

@@ -21,7 +21,7 @@ def get_product_detail(url:str):
     options.add_argument("sec-ch-ua-platform=" + "macOS")
     options.add_argument("cookie=" + "PCID=31489593180081104183684; _fbp=fb.1.1644931520418.1544640325; gd1=Y; X-CP-PT-locale=ko_KR; MARKETID=31489593180081104183684; sid=03ae1c0ed61946c19e760cf1a3d9317d808aca8b; x-coupang-origin-region=KOREA; x-coupang-target-market=KR; x-coupang-accept-language=ko_KR;")
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)   
+    driver = webdriver.Chrome(service=Service("/usr/local/bin/chromedriver"), options=options)
 
     
 

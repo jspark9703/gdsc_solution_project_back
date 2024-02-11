@@ -1,5 +1,4 @@
 
-
 from typing import Optional
 from fastapi import FastAPI, HTTPException,Response
 from models import Review, ReviewList, UserUrl
@@ -10,7 +9,7 @@ from product_reviews import get_reviews
 from review_sum import get_review_sum
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()\
+app = FastAPI()
     
 app.add_middleware(
     CORSMiddleware,
