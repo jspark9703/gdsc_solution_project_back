@@ -1,5 +1,21 @@
-runtime : python311
+runtime: custom
 env: flex
-
 entrypoint: uvicorn main:app --host=0.0.0.0 --port=$PORT
 
+runtime_config:
+  python_version: 3
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 3
+  cpu_utilization:
+    target_utilization: 0.6
+
+resources:
+  cpu: 2
+  memory_gb: 4
+  disk_size_gb: 10
+
+env_variables:
+  # 여기에 필요한 환경 변수를 추가하세요. 예:
+  # SECRET_KEY: "YOUR_SECRET_KEY"

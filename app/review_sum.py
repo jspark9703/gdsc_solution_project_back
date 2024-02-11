@@ -55,10 +55,11 @@ def get_review_sum(user_info:str , review_list:ReviewList):
             
             3. 한국말(korean)로 번역해주세요.
             
-            4. 결과가 450자 이내로 답해주세요.
+            4. 결과가 500자 이내로 답해주세요.
             
             5. reviewlist에 대한 언급은 하지마세요.
             
+            6. 대표하는 구체적인 리뷰가 있다면 언급하세요. 없다면 언급하지마세요.
             
             '''
         ),
