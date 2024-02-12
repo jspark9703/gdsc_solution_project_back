@@ -7,7 +7,7 @@ from langchain.schema import  HumanMessage, SystemMessage
 from models import  ReviewList, UserUrl
 
 #CONTEXT 지정하여 제공
-context = "맛, 조리방법의 간단함, 양과 실용성, 제품의 신선도, 원재료 생산지 "
+context = "맛, 조리방법, 양과 실용성, 제품의 신선도"
 
 
 def get_review_sum(user_info:str , review_list:ReviewList):
@@ -19,7 +19,7 @@ def get_review_sum(user_info:str , review_list:ReviewList):
 
     
     #TODO USERINFO JOIN, CONTEXT 결정, REVIEWLIST 크기 제한
-    llm = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
+    llm = ChatOpenAI(temperature=0.9, openai_api_key=OPENAI_API_KEY)
 
 
     # userinfo = "매운 걸 안좋아함, 시각 장애인"
@@ -38,28 +38,29 @@ def get_review_sum(user_info:str , review_list:ReviewList):
             user은 구매자의 희망 사항 입니다.
             context은 구매자가 생각하는 상품의 중요사항 입니다.
             
-            아래 규칙에 맞추어 user와 context를 최대한 반영한 리뷰 요약을 해주세요.
-            리뷰요약은 구체적으로 작성하세요.
+            아래 규칙에 맞추어 user와 context를 반영한 리뷰 요약을 해주세요.
             
-            1.  장점에는 긍정적인 의견,
-                단점에는 부정적인 의견,
-                종합 리뷰에는 장점과 단점을 잘 요약하고 review들의 다수의 의견을 언급하고 상품을 살 때 주의사항도 언급하여 주세요.
+            1.  pros에는 긍정적인 의견,
+                cons에는 부정적인 의견,
+                final에는 장점과 단점을 잘 요약하고 review들의 다수의 의견을 언급하고 상품을 살 때 주의사항도 언급하여 주세요.
                 
                 
             2. 아래와 같이 json 형식으로 리뷰 결과를 작성해주세요.
-            {
-                "pros": 
-                "cons": 
-                "final": 
-                }
-            
+                {{
+                    "pros": "",
+                    "cons": "",
+                    "final": ""
+                }}
+    
             3. 한국말(korean)로 번역해주세요.
             
-            4. 결과가 500자 이내로 답해주세요.
+            4. 결과를 1500자 이내로 답해주세요.
             
             5. reviewlist에 대한 언급은 하지마세요.
             
-            6. 대표하는 구체적인 리뷰가 있다면 언급하세요. 없다면 언급하지마세요.
+            6. 의견 반영 여부를 언급하지 말고 바로 본론을 작성하세요. 
+            
+            7. pros와 cons는 구체적인 예시도 들어주세요.
             
             '''
         ),
@@ -73,6 +74,5 @@ def get_review_sum(user_info:str , review_list:ReviewList):
 
     result= chain.invoke({"userinfo":user_info,"context":context, "review_list":review_list_soup})
     
-    print(result.content)
     
     return result.content
