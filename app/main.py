@@ -8,9 +8,10 @@ from product_list import get_product_list
 from product_detail import get_product_detail
 from product_reviews import get_reviews
 from review_sum import get_review_sum
+from testnetwork import test_driver_location
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()\
+app = FastAPI() 
     
 app.add_middleware(
     CORSMiddleware,
@@ -36,8 +37,7 @@ async def get_filters():
 @app.get("/search_prod")
 async def search_prod(kwds:Optional[str] = None, is_best_url :Optional[str] = None):
     
-    print(kwds)
-    print(is_best_url)
+    
     try:
         result = get_product_list(kwds,is_best_url)
         return {"data" :result}
@@ -49,6 +49,15 @@ async def search_prod(kwds:Optional[str] = None, is_best_url :Optional[str] = No
 async def prod_detail(produrl:str):
     try:
         result = get_product_detail(produrl)
+        return {"data":result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/test")
+async def test():
+    try:
+        result = test_driver_location()
         return {"data":result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
