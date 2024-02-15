@@ -10,17 +10,28 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 def get_best_filters():
     filter_list = []
+    # Chrome 실행 파일의 경로
+    chrome_bin = "../opt/chrome/chrome-linux64/chrome"
+    
+    # ChromeDriver 실행 파일의 경로
+    chromedriver_bin = "../usr/local/bin/chromedriver-linux64/chromedriver"
+    
+    # Chrome 옵션 설정
     options = webdriver.ChromeOptions()
+    
+    # Docker 컨테이너 내의 Chrome 경로 지정
+    options.binary_location = chrome_bin
     options.add_argument("--headless")
-    options.add_argument("authority=" + "www.coupang.com")
-    options.add_argument("method=" + "GET")
-    options.add_argument("accept=" + "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
-    options.add_argument("accept-encoding=" + "gzip, deflate, br")
-    options.add_argument("user-agent=" + "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.104 Whale/3.13.131.36 Safari/537.36")
-    options.add_argument("sec-ch-ua-platform=" + "macOS")
-    options.add_argument("cookie=" + "PCID=31489593180081104183684; _fbp=fb.1.1644931520418.1544640325; gd1=Y; X-CP-PT-locale=ko_KR; MARKETID=31489593180081104183684; sid=03ae1c0ed61946c19e760cf1a3d9317d808aca8b; x-coupang-origin-region=KOREA; x-coupang-target-market=KR; x-coupang-accept-language=ko_KR;")
-
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)   
+    options.add_argument("--no-sandbox")  # Sandbox 모드 비활성화
+    options.add_argument("--disable-dev-shm-usage")  # /dev/shm 파티션 사용 비활성화
+    options.add_argument("--remote-debugging-port=9222") 
+    
+    # ChromeDriver 서비스 설정
+    service = Service(executable_path=chromedriver_bin)
+    
+  
+    # WebDriver 초기화
+    driver = webdriver.Chrome(service=service, options=options)
     try:
         driver.get("https://www.kurly.com/collection-groups/market-best?page=1&collection=market-best&filters=")
         time.sleep(1)  # 페이지 로딩 대기

@@ -1,5 +1,5 @@
 from typing import List
-from credential.credential import OPENAI_API_KEY
+from credential.apikeys import OPENAI_API_KEY
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts.chat import (ChatPromptTemplate
                                     )
@@ -55,9 +55,7 @@ def get_review_sum(user_info:str , review_list:ReviewList):
             3. 한국말(korean)로 번역해주세요.
             
             4. 결과를 1500자 이내로 답해주세요.
-            
-            5. reviewlist에 대한 언급은 하지마세요.
-            
+                        
             6. 의견 반영 여부를 언급하지 말고 바로 본론을 작성하세요. 
             
             7. pros와 cons는 구체적인 예시도 들어주세요.
